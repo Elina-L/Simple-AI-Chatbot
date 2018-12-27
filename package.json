@@ -1,33 +1,30 @@
 {
-  "name": "simple-ai-chatbot",
+  "name": "Simple-AI-Chatbot",
   "version": "1.0.0",
-  "description": "AI web browser chat bot",
+  "description": "A Simple AI web chatbot",
   "main": "index.js",
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "appmetrics-dash": "^4.0.0",
+    "appmetrics-prometheus": "^2.0.0",
+    "express": "^4.16.4",
+    "log4js": "^3.0.6",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "test",
-    "start": "start"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Elina-L/Simple-AI-Chatbot.git"
   },
-  "keywords": [
-    "AI",
-    "web",
-    "chat",
-    "bot",
-    "speech",
-    "recognition"
-  ],
-  "author": "Wenxin Elina Liu",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Elina-L/Simple-AI-Chatbot/issues"
   },
-  "homepage": "https://github.com/Elina-L/Simple-AI-Chatbot#readme",
-  "dependencies": {
-    "apiai": "^4.0.3",
-    "express": "^4.16.4",
-    "socket.io": "^2.2.0"
-  }
+  "homepage": "https://github.com/Elina-L/Simple-AI-Chatbot#readme"
 }
