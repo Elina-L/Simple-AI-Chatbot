@@ -8,7 +8,6 @@ const appName = require('./package').name;
 const http = require('http');
 const express = require('express');
 const log4js = require('log4js');
-const localConfig = require('./server/config/local.json');
 const path = require('path');
 const logger = log4js.getLogger(appName);
 logger.level = process.env.LOG_LEVEL || 'info'
@@ -19,14 +18,10 @@ const io = require('socket.io')(server);
 const APIAI_TOKEN = process.env.APIAI_TOKEN;
 const APIAI_SESSION_ID = process.env.APIAI_SESSION_ID;
 const apiai = require('apiai')(APIAI_TOKEN);
-// require('./index')(app, server);
 
 app.use(log4js.connectLogger(logger, { level: logger.level }));
 
-// Add your code here
-
-// TODO: All other methods: return 405 errors?
-const port = process.env.PORT || localConfig.port;
+const port = process.env.PORT || 3000;
 server.listen(port, function(){
   logger.info(`simple-chat-ai listening on http://localhost:${port}`);
 });
@@ -45,14 +40,6 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
 	res.sendFile(path.join(__dirname, '/views', '500.html'));
 });
-
-
-// io.on('connection', function (socket) {
-//   socket.emit('news', { hello: 'world' });
-//   socket.on('my other event', function (data) {
-//     console.log(data);
-//   });
-// });
 
 io.on('connection', function(socket) {
   socket.on('chat message', (text) => {
