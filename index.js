@@ -22,7 +22,7 @@ const apiai = require('apiai')(APIAI_TOKEN);
 app.use(log4js.connectLogger(logger, { level: logger.level }));
 
 const port = process.env.PORT || 3000;
-server.listen(port, function(){
+server.listen(process.env.PORT || port, function(){
   logger.info(`simple-chat-ai listening on http://localhost:${port}`);
 });
 
