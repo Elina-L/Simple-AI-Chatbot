@@ -1,16 +1,27 @@
 <!doctype html>
-
 <html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>The HTML5 Herald</title>
-	<meta name="description" content="The HTML5 Herald">
-	<meta name="author" content="SitePoint">
-	<link rel="stylesheet" href="css/styles.css?v=1.0">
-</head>
-<body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.1/socket.io.js"></script>
-    <script src="js/script.js"></script>
-    <button>Talk</button>
-</body>
+	<head>
+		<meta charset="utf-8">
+		<title>Simple AI Bot</title>
+		<meta name="description" content="The HTML5 Herald">
+		<meta name="author" content="SitePoint">
+		<link rel="stylesheet" href="css/styles.css?v=1.0">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+	<body>
+		<section>
+			<h1>Simple AI Bot</h1>
+		    <h2>with Web Speech API</h2>
+		    <div>
+				<button id="talkButton">Talk</button>
+			</div>
+			<div>
+				<p>You said: <em class="output-you">...</em></p>
+				<p>Bot replied: <em class="output-bot">...</em></p>
+			</div>
+
+		</section>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="js/script.js"></script>
+	</body>
 </html>

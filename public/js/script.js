@@ -1,27 +1,29 @@
 const socket = io();
 
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechRecognition = window.SpeechRecognition || 
+						  window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
+
+var outputYou = document.querySelector('.output-you');
+var outputBot = document.querySelector('.output-bot');
 
 recognition.lang = 'en-US';
 recognition.interimResults = false;
 
-document.getElementById('talkButton').addEventListener('click', () => {
+document.querySelector('button').addEventListener('click', () => {
 	console.log('Ready to listen.');
 	recognition.start();
 });
 
-// recognition.addEventListener('speechstart', () => {
-//   console.log('Speech has been detected.');
-// });
+recognition.addEventListener('speechstart', () => {
+  console.log('Speech has been detected.');
+});
 
 recognition.addEventListener('result', function (event) {
 	let last = event.results.length - 1;
 	let text = event.results[last][0].transcript;
 	console.log(event.results);
-
-	console.log('Confidence: ' + event.results[0][0].confidence);
-
+	outputYou.innerHTML = event.results[0][0].transcript;
 	socket.emit('chat message', text);
 
 });
@@ -38,10 +40,10 @@ function synthVoice(text) {
 	const synth = window.speechSynthesis;
 	const utterance = new SpeechSynthesisUtterance();
 	utterance.text = text;
-
-	synth.speek(utterance);
+	synth.speak(utterance);
 }
 
 socket.on('bot reply', function(replyText) {
+	outputBot.innerHTML = replyText;
 	synthVoice(replyText);
 });
